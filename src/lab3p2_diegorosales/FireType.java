@@ -11,7 +11,7 @@ public class FireType extends Pokemon{
 
     @Override
     public String toString() {
-        return super.toString()+"FireType{" + "potenciaLlamas=" + potenciaLlamas + '}';
+        return super.toString()+"Tipo: FireType " + "Potencia de fuego: " + potenciaLlamas ;
     }
     
     

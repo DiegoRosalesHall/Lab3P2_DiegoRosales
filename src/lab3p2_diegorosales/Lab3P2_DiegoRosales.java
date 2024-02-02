@@ -110,6 +110,10 @@ public class Lab3P2_DiegoRosales {
                 listaPokebolas.add(new Pokebola(color,eficiencia));
             }// CREAR POKEBOLA   
             else if(opcionMenu1==3){
+                if(listaPokemon.isEmpty()){
+                    System.out.println("No hay Pokemon que listar!");
+                }
+                else{
                 System.out.println("Lista de pokemons: ");
                 System.out.println("Fire types: ");
                 for (int i = 0; i < listaPokemon.size(); i++) {
@@ -121,6 +125,8 @@ public class Lab3P2_DiegoRosales {
                     }
                     
                 }
+                System.out.println("");
+                System.out.println("Water types: ");
                 for (int i = 0; i < listaPokemon.size(); i++) {
                      if (listaPokemon.get(i)instanceof WaterType){
                         System.out.println((i+1)+". "+listaPokemon.get(i));
@@ -129,6 +135,8 @@ public class Lab3P2_DiegoRosales {
                      }
                     
                 }
+                System.out.println("");
+                System.out.println("Grass types: ");
                 for (int i = 0; i < listaPokemon.size(); i++) {
                      if (listaPokemon.get(i)instanceof GrassType){
                         System.out.println((i+1)+". "+listaPokemon.get(i));
@@ -139,7 +147,132 @@ public class Lab3P2_DiegoRosales {
                      }
                     
                 }
+                System.out.println("");
+                }
             } // LISTAR POKEMONS
+            
+            else if (opcionMenu1 == 4) {
+                if(listaPokemon.isEmpty()){
+                    System.out.println("No hay Pokemon que eliminar!");
+                }
+                else{
+                int b = 1;
+                while (b == 1) {
+                    System.out.println("Selecciona el tipo de Pokemon que deseas eliminar: ");
+                    System.out.println("1. Fire Type");
+                    System.out.println("2. Water Type");
+                    System.out.println("3. Grass Type");
+
+                    int tipoPokemon = mcgregor.nextInt();
+                    if (tipoPokemon < 1 || tipoPokemon > 3) {
+
+                        System.out.println("Error, has seleccionado una opcion invalida, porfavor vuelve a intentarlo");
+
+                    } else if (tipoPokemon == 1) {
+                        int c = 1;
+                        while (c == 1) {
+                            ArrayList<Integer> index = new ArrayList<>();
+                            System.out.println("Fire types: ");
+                            for (int i = 0; i < listaPokemon.size(); i++) {
+                                if (listaPokemon.get(i) instanceof FireType) {
+                                    System.out.println((i + 1) + ". " + listaPokemon.get(i).getNombre());
+                                    index.add(i);
+                                } else {
+
+                                }
+
+                            }
+
+                            int eleccionPokemon = mcgregor.nextInt();
+                            if (eleccionPokemon > index.size() || eleccionPokemon < 1) {
+                                System.out.println("Error has elegido un numero fuera de rango, porfavor vuelve a intentarlo");
+                            } else {
+                                for (int i = 0; i < listaPokemon.size(); i++) {
+                                    if (index.get(eleccionPokemon - 1) == i) {
+                                        listaPokemon.remove(i);
+                                    } else {
+
+                                    }
+
+                                }
+
+                                b = 0;
+                                c = 0;
+
+                            }
+                        }
+                    } else if (tipoPokemon == 2) {
+                        int c = 1;
+                        while (c == 1) {
+
+                            ArrayList<Integer> index = new ArrayList<>();
+                            System.out.println("Water types: ");
+                            for (int i = 0; i < listaPokemon.size(); i++) {
+                                if (listaPokemon.get(i) instanceof WaterType) {
+                                    System.out.println((i + 1) + ". " + listaPokemon.get(i).getNombre());
+                                    index.add(i);
+                                } else {
+                                }
+
+                            }
+
+                            int eleccionPokemon = mcgregor.nextInt();
+                            if (eleccionPokemon > index.size() || eleccionPokemon < 1) {
+                                System.out.println("Error, ha elegido un numero fuera de rango, porfavor vuelva a intentarlo");
+                            } else {
+                                for (int i = 0; i < listaPokemon.size(); i++) {
+                                    if (index.get(eleccionPokemon - 1) == i) {
+                                        listaPokemon.remove(i);
+                                    } else {
+
+                                    }
+
+                                }
+
+                                b = 0;
+                                c=0;
+                                
+                            }
+                        }
+                    } else if (tipoPokemon == 3) {
+                        int c = 1;
+                        while (c == 1) {
+                            ArrayList<Integer> index = new ArrayList<>();
+                            System.out.println("Grass types: ");
+                            for (int i = 0; i < listaPokemon.size(); i++) {
+                                if (listaPokemon.get(i) instanceof GrassType) {
+                                    System.out.println((i + 1) + ". " + listaPokemon.get(i).getNombre());
+                                    index.add(i);
+
+                                } else {
+
+                                }
+
+                            }
+
+                            int eleccionPokemon = mcgregor.nextInt();
+                            if (eleccionPokemon > index.size() || eleccionPokemon < 1) {
+                                System.out.println("Error, ha elegido un numero fuera de rango, porfavor vuelva a intentarlo");
+                            } else {
+                                for (int i = 0; i < listaPokemon.size(); i++) {
+                                    if (index.get(eleccionPokemon - 1) == i) {
+                                        listaPokemon.remove(i);
+                                    } else {
+
+                                    }
+
+                                }
+
+                                b = 0;
+                                c = 0;
+                            }
+
+                        }
+                    }
+
+                }
+                }
+            }
             else if(opcionMenu1==8){
                 a=0;
                 System.out.println("Has finalizado el programa :( ");
