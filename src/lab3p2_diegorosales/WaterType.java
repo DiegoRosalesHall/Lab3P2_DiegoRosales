@@ -12,6 +12,11 @@ public class WaterType extends Pokemon {
         this.velocidadNadar = velocidadNadar;
     }
 
+    @Override
+    public String toString() {
+        return super.toString()+"WaterType{" + "vivirFueraAgua=" + vivirFueraAgua + ", velocidadNadar=" + velocidadNadar + '}';
+    }
+
     
     
     public boolean isVivirFueraAgua() {

@@ -11,6 +11,7 @@ public class Lab3P2_DiegoRosales {
     public static void main(String[] args) {
         int a=1;
         ArrayList<Pokemon> listaPokemon = new ArrayList<>();
+        ArrayList<Pokebola> listaPokebolas = new ArrayList<>();
         while(a==1){
             System.out.println("Bienvenido al menu!");
             System.out.println("1. Crear Pokemon");
@@ -29,7 +30,7 @@ public class Lab3P2_DiegoRosales {
                 System.out.println("Ingresa su numero de enterada a la PokedEx");
                 int nEntrada = mcgregor.nextInt();
                 System.out.println("Ingresa su naturaleza! (Timido/Energetico/Misterioso) :");
-                String naturaleza = mcgregor.nextLine();
+                String naturaleza = mcgregorstring.nextLine();
                
                 int opcionTipo=1;
                 String tipo = "";
@@ -91,11 +92,58 @@ public class Lab3P2_DiegoRosales {
             else if(opcionMenu1==2){
                 System.out.println("Ingrese el color de la Pokebola");
                 String color = mcgregorstring.nextLine();
-                System.out.println("Ingrese su eficiencia en escala de 1-3");
-                int eficiencia = mcgregor.nextInt();
+                int b=1;
+                int eficiencia =0;
+                while(b==1){
+                    
                 
-            }// CREAR POKEBOLA
-            
+                System.out.println("Ingrese su eficiencia en escala de 1-3");
+                eficiencia = mcgregor.nextInt();
+                if(eficiencia>=1 && eficiencia <=3){
+                    b=0;
+                }
+                else{
+                    System.out.println("ERROR, la eficiencia elegida ha salido de los parametros");
+                }
+                  
+            }
+                listaPokebolas.add(new Pokebola(color,eficiencia));
+            }// CREAR POKEBOLA   
+            else if(opcionMenu1==3){
+                System.out.println("Lista de pokemons: ");
+                System.out.println("Fire types: ");
+                for (int i = 0; i < listaPokemon.size(); i++) {
+                    if (listaPokemon.get(i)instanceof FireType){
+                        System.out.println((i+1)+". "+listaPokemon.get(i));
+                    }
+                    else{
+                        
+                    }
+                    
+                }
+                for (int i = 0; i < listaPokemon.size(); i++) {
+                     if (listaPokemon.get(i)instanceof WaterType){
+                        System.out.println((i+1)+". "+listaPokemon.get(i));
+                    }
+                     else{
+                     }
+                    
+                }
+                for (int i = 0; i < listaPokemon.size(); i++) {
+                     if (listaPokemon.get(i)instanceof GrassType){
+                        System.out.println((i+1)+". "+listaPokemon.get(i));
+                        
+                    }
+                     else{
+                         
+                     }
+                    
+                }
+            } // LISTAR POKEMONS
+            else if(opcionMenu1==8){
+                a=0;
+                System.out.println("Has finalizado el programa :( ");
+            }
         }// Fin del menu
         
         

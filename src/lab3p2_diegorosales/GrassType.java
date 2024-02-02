@@ -12,6 +12,11 @@ public class GrassType extends Pokemon{
         this.controlPlantas = controlPlantas;
     }
 
+    @Override
+    public String toString() {
+        return super.toString()+"GrassType{" + "habitat=" + habitat + ", controlPlantas=" + controlPlantas + '}';
+    }
+
     
     
     public String getHabitat() {

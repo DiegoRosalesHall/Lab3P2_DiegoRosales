@@ -5,6 +5,7 @@ public class Pokemon {
    protected int entrada;
    protected String naturaleza;
    protected boolean captura;
+   protected Pokebola pokebal;
 
     public Pokemon(String nombre, int entrada, String naturaleza, boolean captura) {
         this.nombre = nombre;
@@ -52,6 +53,11 @@ public class Pokemon {
 
     public void setCaptura(boolean captura) {
         this.captura = captura;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" + "nombre=" + nombre + ", entrada=" + entrada + ", naturaleza=" + naturaleza + ", captura=" + captura + ", pokebal=" + pokebal + '}';
     }
    
    
