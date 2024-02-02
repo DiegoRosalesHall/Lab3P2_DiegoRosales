@@ -1,13 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab3p2_diegorosales;
 
-/**
- *
- * @author Diego
- */
-public class GrassType {
+
+public class GrassType extends Pokemon{
+    private String habitat;
+    private int  controlPlantas;
+
+    public GrassType(String habitat, int controlPlantas, String nombre, int entrada, String naturaleza, boolean captura) {
+        super(nombre, entrada, naturaleza, captura);
+        this.habitat = habitat;
+        this.controlPlantas = controlPlantas;
+    }
+
+    
+    
+    public String getHabitat() {
+        return habitat;
+    }
+
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
+
+    public int getControlPlantas() {
+        return controlPlantas;
+    }
+
+    public void setControlPlantas(int controlPlantas) {
+        this.controlPlantas = controlPlantas;
+    }
+    
     
 }

@@ -1,13 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab3p2_diegorosales;
 
-/**
- *
- * @author Diego
- */
+
 public class Pokebola {
+    String color;
+    int eficiencia;
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getEficiencia() {
+        return eficiencia;
+    }
+
+    public void setEficiencia(int eficiencia) {
+        this.eficiencia = eficiencia;
+    }
+    
     
 }
