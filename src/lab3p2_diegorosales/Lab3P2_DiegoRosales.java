@@ -306,7 +306,18 @@ public class Lab3P2_DiegoRosales {
                 
                 }
                     Random rand = new Random();
-                    int nrand = rand.nextInt(0,listaPokemon.size());
+                    int f=1;
+                    int nrand=1;
+                    while(f==1){
+                    nrand = rand.nextInt(0,listaPokemon.size());
+                    if(listaPokemon.get(nrand).isCaptura() == false ){
+                        f=0;
+                    }
+                    else{
+                        
+                    }
+                        
+                    }
                 int c=1;
                         while(c==1){
                     System.out.println("UN "+listaPokemon.get(nrand).getNombre()+" HA APARECIDO!");
@@ -393,7 +404,48 @@ public class Lab3P2_DiegoRosales {
                         }
                 
                 }
-            }
+            } // CAPTURAR
+            else if(opcionMenu1==6){
+                int b=1;
+                while(b==1){
+                System.out.println("Seleccione el tipo de Pokemon que desea modificar: ");
+                System.out.println("1. Fire Type");
+                System.out.println("2. Water Type");
+                System.out.println("3. Grass Type");
+                int eleccionTipo = mcgregor.nextInt();
+                if(eleccionTipo==1){
+                    int c=1;
+                    while(c==1){
+                    System.out.println("Selecciona el pokemon que deseas modificar: ");
+                    ArrayList <Integer> index = new ArrayList<>();
+                    for (int i = 0; i < listaPokemon.size(); i++) {
+                        if (listaPokemon.get(i) instanceof FireType && listaPokemon.get(i).isCaptura() == true) {
+                            System.out.println((i + 1) + ". " + listaPokemon.get(i));
+                            index.add(i);
+                        } else {
+
+                        }
+
+                    }
+                    
+                    int eleccionPokemon = mcgregor.nextInt();
+                    if(eleccionPokemon>index.size()){
+                        System.out.println("Error, has intentado seleccionar un pokemon no existente, porfavor vuelve a intentarlo");
+                    }
+                    else{
+                        
+                    }
+                    
+                    
+                    }
+                    
+                } // Fire Type modificar
+                else{
+                    System.out.println("Has elegido un tipo invalido, porfavor vuelve a intentarlo ");
+                }
+                
+                }
+            }// MODIFICAR
             else if(opcionMenu1==8){
                 a=0;
                 System.out.println("Has finalizado el programa :( ");
