@@ -13,7 +13,7 @@ public class Pokebola {
 
     @Override
     public String toString() {
-        return "Pokebola{" + "color=" + color + ", eficiencia=" + eficiencia + '}';
+        return " Color de Pokebola" + color + " Eectividad de pokebola: " + eficiencia ;
     }
 
     

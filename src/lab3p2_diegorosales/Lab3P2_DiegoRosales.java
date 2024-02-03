@@ -408,6 +408,20 @@ public class Lab3P2_DiegoRosales {
             else if(opcionMenu1==6){
                 int b=1;
                 while(b==1){
+                    int cont =0;
+                      for (int i = 0; i < listaPokemon.size(); i++) {
+                            if (listaPokemon.get(i) instanceof FireType && listaPokemon.get(i).isCaptura() == true){
+                                cont ++;
+                            }
+                            else{
+                                
+                            }
+                        }
+                        if(cont==0){
+                            System.out.println("No hay pokemons atrapados para modificar! ");
+                            b=0;
+                        }
+                        else{
                 System.out.println("Seleccione el tipo de Pokemon que desea modificar: ");
                 System.out.println("1. Fire Type");
                 System.out.println("2. Water Type");
@@ -415,6 +429,7 @@ public class Lab3P2_DiegoRosales {
                 int eleccionTipo = mcgregor.nextInt();
                 if(eleccionTipo==1){
                     int c=1;
+                    
                     while(c==1){
                     System.out.println("Selecciona el pokemon que deseas modificar: ");
                     ArrayList <Integer> index = new ArrayList<>();
@@ -433,7 +448,42 @@ public class Lab3P2_DiegoRosales {
                         System.out.println("Error, has intentado seleccionar un pokemon no existente, porfavor vuelve a intentarlo");
                     }
                     else{
+                        int d=1;
+                        while(d==1){
+                        System.out.println("Que desea modificar del pokemon?");
+                        System.out.println("1. Nombre");
+                        System.out.println("2. Numero de entrada en la pokedex");
+                        System.out.println("3. Potencia de llamas");
                         
+                        
+                        int modificacion = mcgregor.nextInt();
+                        if(modificacion==1){
+                            System.out.println("Ingrese el nuevo nombre: ");
+                            String newNombre = mcgregorstring.nextLine();
+                            
+                            listaPokemon.get(index.get(eleccionPokemon-1)).setNombre(newNombre);
+                            d=0;
+                        }
+                        
+                        else if(modificacion==2){
+                            System.out.println("Ingrese el nuevo numero de entrada: ");
+                            int newNumero = mcgregor.nextInt();
+                            listaPokemon.get(index.get(eleccionPokemon-1)).setEntrada(newNumero);
+                            d=0;
+                        }
+                        else if(modificacion ==3){
+                            System.out.println("Ingrese la nueva potencia de las llamas");
+                            int newPotencia = mcgregor.nextInt();
+                            ((FireType)listaPokemon.get(index.get(eleccionPokemon-1))).setPotenciaLlamas(newPotencia);
+                            d=0;
+                        }
+                        else{
+                            System.out.println("Error, numero invalido, vuelva a intentarlo");
+                        }
+                        }
+                        
+                        c=0;
+                        b=0;
                     }
                     
                     
@@ -444,6 +494,7 @@ public class Lab3P2_DiegoRosales {
                     System.out.println("Has elegido un tipo invalido, porfavor vuelve a intentarlo ");
                 }
                 
+                        }
                 }
             }// MODIFICAR
             else if(opcionMenu1==8){
