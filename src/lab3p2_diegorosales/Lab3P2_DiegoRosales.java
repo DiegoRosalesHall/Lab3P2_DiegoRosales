@@ -22,8 +22,7 @@ public class Lab3P2_DiegoRosales {
             System.out.println("4. Eliminar Pokemon");
             System.out.println("5. Capturar Pokemon");
             System.out.println("6. Modificar Pokemon");
-            System.out.println("7. Evolucionar Pokemon??");
-            System.out.println("8. Finalizar el programa :( ");
+            System.out.println("7. Finalizar el programa :( ");
             int opcionMenu1= mcgregor.nextInt();
             if(opcionMenu1==1){
                 
@@ -31,11 +30,21 @@ public class Lab3P2_DiegoRosales {
                 String nombre = mcgregorstring.nextLine();
                 System.out.println("Ingresa su numero de enterada a la PokedEx");
                 int nEntrada = mcgregor.nextInt();
+                int z=1;
+                String naturaleza ="";
+                while(z==1){
                 System.out.println("Ingresa su naturaleza! (Timido/Energetico/Misterioso) :");
-                String naturaleza = mcgregorstring.nextLine();
-               
+                naturaleza="";
+                naturaleza += mcgregorstring.nextLine();
+                if(naturaleza.equals("Timido") || naturaleza.equals("timido") ||naturaleza.equals("Energetico") ||naturaleza.equals("energetico") ||naturaleza.equals("Misterioso") ||naturaleza.equals("misterioso") ){
+               z=0;
+                }
+                else{
+                    System.out.println("La naturaleza ingresada no es valida, porfavor vuelva a intentarlo");
+                }
+                }
                 int opcionTipo=1;
-                String tipo = "";
+                
                 while (opcionTipo==1){
                 System.out.println("Inserta el tipo de pokemon: ");
                 System.out.println("1. Fire-Type");
@@ -43,7 +52,7 @@ public class Lab3P2_DiegoRosales {
                 System.out.println("3. Grass-Type");
                 int seleccionTipo = mcgregor.nextInt();
                 if(seleccionTipo==1){
-                    System.out.println("Ingrese la potencia del fuego en escala de enteros del 1-100");
+                    System.out.println("Ingrese la potencia del fuego ");
                     int potencia = mcgregor.nextInt();
                     listaPokemon.add(new FireType(potencia,nombre,nEntrada,naturaleza,false));
                     opcionTipo=0;
@@ -77,12 +86,22 @@ public class Lab3P2_DiegoRosales {
                     listaPokemon.add(new WaterType(vidaFueraAgua,velocidad,nombre,nEntrada,naturaleza, false));
                 }
                 else if(seleccionTipo==3){
+                    int f=1;
+                    while(f==1){
                     System.out.println("Ingrese su control sobre las plantas con un entero del 1-100: ");
                     int control = mcgregor.nextInt();
-                    System.out.println("Ingrese el habitat del pokemon:  ");
+                    if(control>100 || control<1){
+                        System.out.println("Error, ha intentado ingresar un numero invalido");
+                    }
+                    else{
+                         System.out.println("Ingrese el habitat del pokemon:  ");
                     String habitat = mcgregorstring.nextLine();
                     listaPokemon.add(new GrassType(habitat,control,nombre,nEntrada,naturaleza,false));
                     opcionTipo=0;
+                        f=0;
+                    }
+                    }
+                   
                 }
                 else{
                     System.out.println("Error, seleccion invalida");
@@ -413,6 +432,12 @@ public class Lab3P2_DiegoRosales {
                             if (listaPokemon.get(i) instanceof FireType && listaPokemon.get(i).isCaptura() == true){
                                 cont ++;
                             }
+                            else if (listaPokemon.get(i) instanceof WaterType && listaPokemon.get(i).isCaptura() == true){
+                                cont ++;
+                            }
+                            else if (listaPokemon.get(i) instanceof GrassType && listaPokemon.get(i).isCaptura() == true){
+                                cont ++;
+                            }
                             else{
                                 
                             }
@@ -428,6 +453,17 @@ public class Lab3P2_DiegoRosales {
                 System.out.println("3. Grass Type");
                 int eleccionTipo = mcgregor.nextInt();
                 if(eleccionTipo==1){
+                    int cont1 =0;
+                        for (int i = 0; i < listaPokemon.size(); i++) {
+                            if (listaPokemon.get(i) instanceof FireType && listaPokemon.get(i).isCaptura() == true){
+                                cont1 ++;
+                            }
+                        }
+                        if(cont1==0){
+                            System.out.println("No hay pokemon de tipo Fuego atrapados");
+                        }
+                        
+                        else{
                     int c=1;
                     
                     while(c==1){
@@ -486,10 +522,211 @@ public class Lab3P2_DiegoRosales {
                         b=0;
                     }
                     
-                    
+                    }
                     }
                     
                 } // Fire Type modificar
+                
+                else if(eleccionTipo==2){
+                    int cont1 =0;
+                        for (int i = 0; i < listaPokemon.size(); i++) {
+                            if (listaPokemon.get(i) instanceof WaterType && listaPokemon.get(i).isCaptura() == true){
+                                cont1 ++;
+                            }
+                        }
+                        if(cont1==0){
+                            System.out.println("No hay pokemon de tipo Agua atrapados");
+                        }
+                        
+                        else{
+                            
+                        
+                    int c=1;
+                    
+                    while(c==1){
+                    System.out.println("Selecciona el pokemon que deseas modificar: ");
+                    ArrayList <Integer> index = new ArrayList<>();
+                    for (int i = 0; i < listaPokemon.size(); i++) {
+                        if (listaPokemon.get(i) instanceof WaterType && listaPokemon.get(i).isCaptura() == true) {
+                            System.out.println((i + 1) + ". " + listaPokemon.get(i));
+                            index.add(i);
+                        } else {
+
+                        }
+
+                    }
+                    
+                    int eleccionPokemon = mcgregor.nextInt();
+                    if(eleccionPokemon>index.size()){
+                        System.out.println("Error, has intentado seleccionar un pokemon no existente, porfavor vuelve a intentarlo");
+                    }
+                    else{
+                        int d=1;
+                        while(d==1){
+                        System.out.println("Que desea modificar del pokemon?");
+                        System.out.println("1. Nombre");
+                        System.out.println("2. Numero de entrada en la pokedex");
+                        System.out.println("3. Velocidad en agua");
+                            System.out.println("4. Vida fuera del agua");
+                        
+                        
+                        int modificacion = mcgregor.nextInt();
+                        if(modificacion==1){
+                            System.out.println("Ingrese el nuevo nombre: ");
+                            String newNombre = mcgregorstring.nextLine();
+                            
+                            listaPokemon.get(index.get(eleccionPokemon-1)).setNombre(newNombre);
+                            d=0;
+                        }
+                        
+                        else if(modificacion==2){
+                            System.out.println("Ingrese el nuevo numero de entrada: ");
+                            int newNumero = mcgregor.nextInt();
+                            listaPokemon.get(index.get(eleccionPokemon-1)).setEntrada(newNumero);
+                            d=0;
+                        }
+                        else if(modificacion ==3){
+                            System.out.println("Ingrese la nueva velocidad al nadar");
+                            int newVelocidad = mcgregor.nextInt();
+                            ((WaterType)listaPokemon.get(index.get(eleccionPokemon-1))).setVelocidadNadar(newVelocidad);
+                            d=0;
+                        }
+                        
+                        else if(modificacion == 4 ){
+                            int f=1;
+                            while(f==1){
+                            System.out.println("Ingresa si el pokemon puede vivir dentro del agua o no");
+                            System.out.println("1. Si");
+                            System.out.println("2. No");
+                            int opcionx = mcgregor.nextInt();
+                            if(opcionx==1){
+                                ((WaterType)listaPokemon.get(index.get(eleccionPokemon-1))).setVivirFueraAgua(true);
+                            f=0;
+                          
+                            }
+                            else if(opcionx==2){
+                                       ((WaterType)listaPokemon.get(index.get(eleccionPokemon-1))).setVivirFueraAgua(false);
+                             f=0;
+                             
+                            }
+                            else{
+                                System.out.println("Has elegido una opcion invalida, vuelve a intentarlo");
+                            }
+                            }
+                            d=0;
+                        }
+                        else{
+                            System.out.println("Error, numero invalido, vuelva a intentarlo");
+                        }
+                        }
+                        
+                        c=0;
+                        b=0;
+                    }
+                    
+                    
+                    }
+                        }
+                    
+                } // Water Type modificar
+                
+                else if(eleccionTipo==3){
+                    int cont1 =0;
+                        for (int i = 0; i < listaPokemon.size(); i++) {
+                            if (listaPokemon.get(i) instanceof GrassType && listaPokemon.get(i).isCaptura() == true){
+                                cont1 ++;
+                            }
+                        }
+                        if(cont1==0){
+                            System.out.println("No hay pokemon de tipo Fuego atrapados");
+                        }
+                        
+                        else{
+                            
+                        
+                    int c=1;
+                    
+                    while(c==1){
+                    System.out.println("Selecciona el pokemon que deseas modificar: ");
+                    ArrayList <Integer> index = new ArrayList<>();
+                    for (int i = 0; i < listaPokemon.size(); i++) {
+                        if (listaPokemon.get(i) instanceof GrassType && listaPokemon.get(i).isCaptura() == true) {
+                            System.out.println((i + 1) + ". " + listaPokemon.get(i));
+                            index.add(i);
+                        } else {
+
+                        }
+
+                    }
+                    
+                    int eleccionPokemon = mcgregor.nextInt();
+                    if(eleccionPokemon>index.size()){
+                        System.out.println("Error, has intentado seleccionar un pokemon no existente, porfavor vuelve a intentarlo");
+                    }
+                    else{
+                        int d=1;
+                        while(d==1){
+                        System.out.println("Que desea modificar del pokemon?");
+                        System.out.println("1. Nombre");
+                        System.out.println("2. Numero de entrada en la pokedex");
+                        System.out.println("3. Habitat");
+                            System.out.println("4. Control sobre plantas");
+                        
+                        
+                        int modificacion = mcgregor.nextInt();
+                        if(modificacion==1){
+                            System.out.println("Ingrese el nuevo nombre: ");
+                            String newNombre = mcgregorstring.nextLine();
+                            
+                            listaPokemon.get(index.get(eleccionPokemon-1)).setNombre(newNombre);
+                            d=0;
+                        }
+                        
+                        else if(modificacion==2){
+                            System.out.println("Ingrese el nuevo numero de entrada: ");
+                            int newNumero = mcgregor.nextInt();
+                            listaPokemon.get(index.get(eleccionPokemon-1)).setEntrada(newNumero);
+                            d=0;
+                        }
+                        else if(modificacion ==3){
+                            System.out.println("Ingrese el nuevo habitat");
+                            String newHabitat = mcgregorstring.nextLine();
+                            ((GrassType)listaPokemon.get(index.get(eleccionPokemon-1))).setHabitat(newHabitat);
+                            d=0;
+                        }
+                        
+                        else if(modificacion == 4 ){
+                            int f=1;
+                            while(f==1){
+                           System.out.println("Ingrese su nuevo control con plantas");
+                            int newControl = mcgregor.nextInt();
+                            
+                            if(newControl>100 || newControl<1){
+                                System.out.println("Numero invalido, vuelva a intentarlo");
+                            }
+                            else{
+                                ((GrassType)listaPokemon.get(index.get(eleccionPokemon-1))).setControlPlantas(newControl);
+                            d=0;
+                            f=0;
+                            }
+                            }
+                            
+                        }
+                        else{
+                            System.out.println("Error, numero invalido, vuelva a intentarlo");
+                        }
+                        }
+                        
+                        c=0;
+                        b=0;
+                    }
+                    
+                    
+                    }
+                        }
+                    
+                    
+                }
                 else{
                     System.out.println("Has elegido un tipo invalido, porfavor vuelve a intentarlo ");
                 }
@@ -497,7 +734,7 @@ public class Lab3P2_DiegoRosales {
                         }
                 }
             }// MODIFICAR
-            else if(opcionMenu1==8){
+            else if(opcionMenu1==7){
                 a=0;
                 System.out.println("Has finalizado el programa :( ");
             }
