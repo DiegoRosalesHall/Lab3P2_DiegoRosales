@@ -285,18 +285,31 @@ public class Lab3P2_DiegoRosales {
                     System.out.println("No hay Pokemon que atrapar! :( ");
                 }
                 else{
-                    Random rand = new Random();
+                    int d=1;
+                    int eleccionPokebola=0;
+                    while(d==1){
+                    
                 System.out.println("Eliga su Pokebola!: ");
                 for (int i = 0; i < listaPokebolas.size(); i++) {
                     System.out.println((i+1)+". Eficiencia: "+listaPokebolas.get(i).getEficiencia()+"  Color: "+listaPokebolas.get(i).getColor());
                 }
-                int eleccionPokebola = mcgregor.nextInt();
+                    eleccionPokebola=0;
+                    eleccionPokebola+= mcgregor.nextInt();
+                    
+                    if(eleccionPokebola>listaPokebolas.size() || eleccionPokebola<1){
+                        System.out.println("Has intentado elegir una pokebola no existente! Vuelve a intentarlo");
+                    }
+                    else{
+                        d=0;
+                    }
+                    
                 
-                
-                int nrand = rand.nextInt(0,listaPokemon.size());
+                }
+                    Random rand = new Random();
+                    int nrand = rand.nextInt(0,listaPokemon.size());
                 int c=1;
                         while(c==1){
-                    System.out.println("EL POKEMON "+listaPokemon.get(nrand).getNombre());
+                    System.out.println("UN "+listaPokemon.get(nrand).getNombre()+" HA APARECIDO!");
                     System.out.println("Que deseas hacer? ");
                     System.out.println("1. Intentar Capturar");
                     System.out.println("2. Huir ");
@@ -311,11 +324,11 @@ public class Lab3P2_DiegoRosales {
                                 System.out.println("La pokebola tiembla... ");
                             }
                                System.out.println("Has atrapado a "+listaPokemon.get(nrand).getNombre()+"!");
-                                System.out.println(listaPokemon.get(nrand).getNombre()+"Ha sido añadido a tu equipo");
+                                System.out.println(listaPokemon.get(nrand).getNombre()+" ha sido añadido a tu equipo");
                                 c=0;
                                 listaPokemon.get(nrand).setPokebal(listaPokebolas.get(eleccionPokebola-1));
                                 listaPokebolas.remove(eleccionPokebola-1);
-                                listaPokemon.get(nrand-1).setCaptura(true);
+                                listaPokemon.get(nrand).setCaptura(true);
                             }
                             else{
                                 for (int i = 0; i < probabilidad; i++) {
@@ -337,7 +350,7 @@ public class Lab3P2_DiegoRosales {
                                 System.out.println("La pokebola tiembla... ");
                             }
                                System.out.println("Has atrapado a "+listaPokemon.get(nrand).getNombre()+"!");
-                                System.out.println(listaPokemon.get(nrand).getNombre()+"Ha sido añadido a tu equipo");
+                                System.out.println(listaPokemon.get(nrand).getNombre()+" ha sido añadido a tu equipo");
                                 c=0;
                                 listaPokemon.get(nrand).setPokebal(listaPokebolas.get(eleccionPokebola-1));
                                 listaPokebolas.remove(eleccionPokebola-1);
@@ -360,7 +373,7 @@ public class Lab3P2_DiegoRosales {
                                 System.out.println("La pokebola tiembla... ");
                             }
                             System.out.println("Has atrapado a "+listaPokemon.get(nrand).getNombre()+"!");
-                            System.out.println(listaPokemon.get(nrand).getNombre()+"Ha sido añadido a tu equipo");
+                            System.out.println(listaPokemon.get(nrand).getNombre()+" ha sido añadido a tu equipo");
                             listaPokemon.get(nrand).setPokebal(listaPokebolas.get(eleccionPokebola-1));
                                 listaPokebolas.remove(eleccionPokebola-1);
                                 listaPokemon.get(nrand).setCaptura(true);
