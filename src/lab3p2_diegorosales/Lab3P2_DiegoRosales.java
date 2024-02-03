@@ -2,6 +2,7 @@
 package lab3p2_diegorosales;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -9,6 +10,7 @@ public class Lab3P2_DiegoRosales {
     public static Scanner mcgregor = new Scanner(System.in);
     public static Scanner mcgregorstring = new Scanner(System.in);
     public static void main(String[] args) {
+        
         int a=1;
         ArrayList<Pokemon> listaPokemon = new ArrayList<>();
         ArrayList<Pokebola> listaPokebolas = new ArrayList<>();
@@ -271,6 +273,112 @@ public class Lab3P2_DiegoRosales {
                     }
 
                 }
+                }
+            } // ELIMINAR POKEMON
+            
+            else if(opcionMenu1==5){
+                
+                if(listaPokebolas.isEmpty()){
+                    System.out.println("No hay Pokebolas para Capturar :( ");
+                }
+                else if(listaPokemon.isEmpty()){
+                    System.out.println("No hay Pokemon que atrapar! :( ");
+                }
+                else{
+                    Random rand = new Random();
+                System.out.println("Eliga su Pokebola!: ");
+                for (int i = 0; i < listaPokebolas.size(); i++) {
+                    System.out.println((i+1)+". Eficiencia: "+listaPokebolas.get(i).getEficiencia()+"  Color: "+listaPokebolas.get(i).getColor());
+                }
+                int eleccionPokebola = mcgregor.nextInt();
+                
+                
+                int nrand = rand.nextInt(0,listaPokemon.size());
+                int c=1;
+                        while(c==1){
+                    System.out.println("EL POKEMON "+listaPokemon.get(nrand).getNombre());
+                    System.out.println("Que deseas hacer? ");
+                    System.out.println("1. Intentar Capturar");
+                    System.out.println("2. Huir ");
+                    int eleccion = mcgregor.nextInt();
+                    if(eleccion==1){
+                        if(listaPokebolas.get(eleccionPokebola-1).getEficiencia()==1){
+                            int probAtrapar = 1;
+                            int probabilidad = rand.nextInt(1,4);
+                            
+                            if(probAtrapar==probabilidad){
+                               for (int i = 0; i < 4; i++) {
+                                System.out.println("La pokebola tiembla... ");
+                            }
+                               System.out.println("Has atrapado a "+listaPokemon.get(nrand).getNombre()+"!");
+                                System.out.println(listaPokemon.get(nrand).getNombre()+"Ha sido añadido a tu equipo");
+                                c=0;
+                                listaPokemon.get(nrand).setPokebal(listaPokebolas.get(eleccionPokebola-1));
+                                listaPokebolas.remove(eleccionPokebola-1);
+                                listaPokemon.get(nrand-1).setCaptura(true);
+                            }
+                            else{
+                                for (int i = 0; i < probabilidad; i++) {
+                                    System.out.println("La pokebola tiembla... ");
+                                    
+                                }
+                                
+                                System.out.println("Rayos y centellas, "+listaPokemon.get(nrand).getNombre() +" ha roto la pokebola!");
+                                System.out.println(listaPokemon.get(nrand).getNombre()+" ha escapado ");
+                                c=0;
+                                listaPokebolas.remove(eleccionPokebola-1);
+                            }
+                        }
+                        else if(listaPokebolas.get(eleccionPokebola-1).getEficiencia()==2){
+                            int probAtrapar = 2;
+                            int probabilidad = rand.nextInt(1,4);
+                            if(probAtrapar<=probabilidad){
+                               for (int i = 0; i < 4; i++) {
+                                System.out.println("La pokebola tiembla... ");
+                            }
+                               System.out.println("Has atrapado a "+listaPokemon.get(nrand).getNombre()+"!");
+                                System.out.println(listaPokemon.get(nrand).getNombre()+"Ha sido añadido a tu equipo");
+                                c=0;
+                                listaPokemon.get(nrand).setPokebal(listaPokebolas.get(eleccionPokebola-1));
+                                listaPokebolas.remove(eleccionPokebola-1);
+                                listaPokemon.get(nrand).setCaptura(true);
+                            }
+                            else{
+                                for (int i = 0; i < probabilidad; i++) {
+                                    System.out.println("La pokebola tiembla... ");
+                                    
+                                }
+                                
+                                System.out.println("Rayos y centellas, "+listaPokemon.get(nrand).getNombre() +" ha roto la pokebola!");
+                                System.out.println(listaPokemon.get(nrand).getNombre()+" ha escapado ");
+                                c=0;
+                                listaPokebolas.remove(eleccionPokebola-1);
+                            }
+                        }
+                        else if(listaPokebolas.get(eleccionPokebola-1).getEficiencia()==3){
+                            for (int i = 0; i < 4; i++) {
+                                System.out.println("La pokebola tiembla... ");
+                            }
+                            System.out.println("Has atrapado a "+listaPokemon.get(nrand).getNombre()+"!");
+                            System.out.println(listaPokemon.get(nrand).getNombre()+"Ha sido añadido a tu equipo");
+                            listaPokemon.get(nrand).setPokebal(listaPokebolas.get(eleccionPokebola-1));
+                                listaPokebolas.remove(eleccionPokebola-1);
+                                listaPokemon.get(nrand).setCaptura(true);
+                                c=0;
+                        }
+                        
+                        
+                    }
+                    else if(eleccion == 2 ){
+                        System.out.println("Has huido con exito!");
+                        c=0;
+                    }
+                    
+                    else{
+                        System.out.println("Elegiste una opcion invalida! porfavor vuelve a intentarlo");
+                    }
+                        }
+                
                 }
             }
             else if(opcionMenu1==8){

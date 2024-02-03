@@ -17,6 +17,14 @@ public class Pokemon {
 
     public Pokemon() {
     }
+
+    public Pokebola getPokebal() {
+        return pokebal;
+    }
+
+    public void setPokebal(Pokebola pokebal) {
+        this.pokebal = pokebal;
+    }
     
     
 
